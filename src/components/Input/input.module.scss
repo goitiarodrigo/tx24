@@ -1,0 +1,10 @@
+.input {
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.43);
+    transition: 300ms;
+    margin: 2px 0 2px 0;
+    &:focus {
+        border: 1px solid #fe0a87;
+        transition: 300ms;
+    }
+}

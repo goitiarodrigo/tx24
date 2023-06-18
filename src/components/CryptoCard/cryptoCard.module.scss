@@ -1,0 +1,103 @@
+.card_container {
+    position: relative;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 20rem;
+    height: 11rem;
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    margin-right: 2rem;
+
+    .currency_type {
+        margin-top: 1rem;
+        color: white;
+        display: flex;
+        align-items: center;
+
+    }
+
+    img {
+        width: 35px;
+        margin-right: 1rem;
+    }
+
+    .value_up {
+        background-color: #276749;
+        color: #276749;
+        font-weight: 900;
+    }
+    
+    .value_down {
+        background-color: #9b2c2c;
+        color: #9b2c2c;
+        font-weight: 900;
+    }
+
+    .percentage_state {
+        padding: 5px;
+        position: absolute;
+        top: -19px;
+        right: calc(100% / 2 - 52px);
+        font-size: 1.5rem;
+        color: white;
+        font-weight: 800;
+        border-radius: 5px;
+    }
+
+    .difference_container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            span {
+                width: 100%;
+                text-align: center;
+                margin-top: 0.5rem;
+                padding-bottom: 0.5rem;
+            }
+            & span:first-child {
+                color: white;
+                border-bottom: 2px solid #fe0a886d;
+            }
+            .percentage {
+                border-left: 2px solid #fe0a886d;
+            }
+        }
+    }
+
+    .purchase_container {
+        position: absolute;
+        bottom: -15px;
+        right: -15px;
+        background-color: white;
+        padding: 10px;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 100%;
+        cursor: pointer;
+        filter: blur(0.6px);
+        div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 500ms;
+            &:hover {
+                transition: 500ms;
+                transform: rotateY(360deg)
+            }
+        }
+        
+    }
+}
+
