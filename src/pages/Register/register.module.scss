@@ -4,14 +4,15 @@ div.login_container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
 
     .login_image {
         background-image: url('../../assets/background.svg');
         background-position: right;
         background-repeat: no-repeat;
         background-size: cover;
-        width: 55%;
-        height: 100%;
+        width: 55vw;
+        height: 100vh;
     }
 
     .form_container {
@@ -32,7 +33,11 @@ div.login_container {
                 padding: 10px;
             }
             .errors {
+                align-self: center;
                 height: 1.5rem;
+                height: 1.5rem;
+                color: red;
+                font-weight: 800;
             }
             & input:last-child {
                 border: none;
@@ -43,10 +48,17 @@ div.login_container {
                 font-weight: 800;
                 font-size: 1rem;
                 cursor: pointer;
+
+            }
+            input.enabled {
                 &:hover {
                     background-color: #fe0a88be;
                     transition: 250ms;
                 }
+            }
+            input.disabled {
+                background-color: #fe0a8864;
+                cursor: not-allowed;
             }
         }
     }

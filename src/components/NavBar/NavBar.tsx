@@ -1,8 +1,12 @@
 import { closeSessionSvg } from '../../assets/CloseSession.svg'
 import styles from './navBar.module.scss'
 import { useNavigate, NavLink } from 'react-router-dom'
+import { useContext } from 'react'
+import { CryptoContext } from '../../context/CryptoContext'
 
 const NavBar = () => {
+    const { user } = useContext(CryptoContext)
+    const { username } = user
     const navigate = useNavigate()
 
     const handleSignOut = () => {
@@ -19,7 +23,6 @@ const NavBar = () => {
             <nav>
                 <NavLink
                     className={({ isActive }) => {
-                        console.log(isActive)
                         return isActive ? `${styles.active}` : ""
                     }}
                     to={'/home'}
@@ -34,7 +37,7 @@ const NavBar = () => {
                 >
                     Historial de compras
                 </NavLink>
-                <span>{'Username'}</span>
+                <span>{username}</span>
                 <div
                     className={styles.close_session_svg}
                     title='Sign out'

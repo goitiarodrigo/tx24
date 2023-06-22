@@ -1,12 +1,15 @@
 import styles from  './App.module.scss'
-import Login from './pages/Login/Login'
+import { CryptoProvider } from './context/CryptoProvider'
 import Navigation from './routes/Navigation'
 
 function App() {
 
   return (
     <div className={styles.app_container}>
-      <Navigation />
+        <CryptoProvider>
+            <Navigation />
+        </CryptoProvider>
+        
     </div>
   )
 }

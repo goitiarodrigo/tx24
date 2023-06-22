@@ -1,0 +1,24 @@
+.wallet {
+    background-color: #1b1d22;
+    padding: 1rem;
+    height: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 10rem;
+
+    h3 {
+        font-size: 1rem;
+        color: rgba(245, 245, 245, 0.575);
+        text-align: start;
+        font-family: sans-serif;
+        letter-spacing: 1.3px;
+    }
+    
+    span {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.668);
+    }
+}

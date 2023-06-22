@@ -98,10 +98,12 @@
                     }
                     
                 }
-                select {
-                    width: 50%;
-                    border: none;
-                    outline: none;
+                span {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    justify-content: center;
+                    font-weight: bold;
                 }
             }
         }
@@ -121,6 +123,25 @@
                 background-color: #fe0a88be;
                 transition: 250ms;
             }
+        }
+        .disable {
+            transition: 250ms;
+            background-color: #fe0a8872;
+            cursor: not-allowed;
+        }
+        .enable {
+            transition: 250ms;
+            background-color: #fe0a87;
+        }
+        .isDone {
+            cursor: not-allowed;
+            transition: 250ms;
+            background-color: darkgreen;
+        }
+        .isError {
+            cursor: not-allowed;
+            transition: 250ms;
+            background-color:  crimson;
         }
     }
 }
