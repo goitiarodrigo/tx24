@@ -12,7 +12,6 @@ import Loader from '../../components/Loader/Loader'
 const Home = () => {
 
     const { allCryptos, setAllCryptos, setWallet } = useContext(CryptoContext)
-    const [existError, setExistError] = useState(false)
     const [loading, setLoading] = useState(true)
     const [coinSelected, setCoinSelected] = useState({coin_client: '', coin_platform: 'Bitcoin'})
     const [totalValueExchange, setTotalValueExchange] = useState(0)
