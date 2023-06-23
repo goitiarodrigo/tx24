@@ -1,4 +1,4 @@
-import { useContext, useState, useRef, ChangeEvent } from 'react'
+import { useContext, useState, useRef, ChangeEvent, useMemo } from 'react'
 import { crossSvg } from '../../assets/Cross.svg'
 import { infoSvg } from '../../assets/Info.svg'
 import styles from './purchaseModal.module.scss'
@@ -20,9 +20,9 @@ const styles_types = {
 
 const Modal = ({ onClose, cryptoData }: IProps) => {
 
-    const { allCryptos, user } = useContext(CryptoContext)
+    const { allCryptos, user, wallet } = useContext(CryptoContext)
     const { id } = user
-    const [coinSelected, setCoinSelected] = useState({client_coin: 'EUR', platform_coin: ''})
+    const [coinSelected, setCoinSelected] = useState({client_coin: wallet[0].crypto_name, platform_coin: ''})
     const [totalReceive, setTotalReceive] = useState('0')
     const [status, setStatus] = useState<'loading' | 'done' | 'error' | 'ready'>('ready')
 
@@ -55,18 +55,24 @@ const Modal = ({ onClose, cryptoData }: IProps) => {
     }
 
     const handleChangeAmount = (e: ChangeEvent<HTMLInputElement>) => {
+        status === 'error' && setStatus('ready')
         const { value } = e.target
         const result = calculatePrice(Number(value))
         setTotalReceive(result)
-
+        if (value > balance) setStatus('error')
     }
 
-    const handleChange = (e: any) => {
+    const handleSelectChange = (e: any) => {
+        status === 'error' && setStatus('ready')
         setTotalReceive('0')
         inputRef.current.value = '0'
         const { value, name } = e.target
-        setCoinSelected({...coinSelected, [name]: value})
+        if (value) setCoinSelected({...coinSelected, [name]: value})
     }
+
+    const balance = useMemo(()=> {
+        return wallet.filter(el => el.crypto_name.toLowerCase() === coinSelected.client_coin.toLowerCase())[0].balance
+    }, [coinSelected])
 
     const calculatePrice = (amount?: number) => {
         if (coinSelected.client_coin !== 'EUR') {
@@ -90,18 +96,17 @@ const Modal = ({ onClose, cryptoData }: IProps) => {
                             <label>You pay</label>
                             <input ref={inputRef} type='number' onChange={handleChangeAmount} />
                         </div>
-                        <select name='client_coin' onClick={handleChange}>
-                            <option >EUR</option>
+                        <select name='client_coin' onClick={handleSelectChange}>
                             {
-                                allCryptos?.map(({name, id}) => (
-                                    <option key={id}>{ name }</option>
+                                wallet?.map(({crypto_name, id}) => (
+                                    <option key={id}>{ crypto_name === 'Eur' ? 'EUR' : crypto_name}</option>
                                 ))
                             }
                         </select>
                     </div>
                     <div className={styles.rate}>
                         <span>{infoSvg()}</span>
-                        <span>Balance: 452 Bitcoin</span>
+                        <span>Balance: {`${balance} ${coinSelected.client_coin}`}</span>
                     </div>
                     <div className={styles.rate}>
                         <span>{infoSvg()}</span>

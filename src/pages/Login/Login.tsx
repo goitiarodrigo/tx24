@@ -34,8 +34,6 @@ const Login = () => {
         }
     }
 
-    console.log(isLoading)
-
     return (
         <div className={styles.login_container}>
             <div className={styles.login_image}/>

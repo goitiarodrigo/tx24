@@ -5,7 +5,7 @@ import styles from './home.module.scss'
 import Body from '../../components/Body/Body'
 import { CryptoContext } from '../../context/CryptoContext'
 import { get_crypto_currencies } from '../../services/crypto.service'
-import { Toaster } from 'react-hot-toast'
+import { toast, Toaster } from 'react-hot-toast'
 import BalanceModal from '../../components/BalanceModal/BalanceModal'
 import Loader from '../../components/Loader/Loader'
 
@@ -26,7 +26,7 @@ const Home = () => {
     
     async function getCryptoCurrencies() {
         setLoading(true)
-        const { success, resp, wallet: wallet_data } = await get_crypto_currencies(localStorage.getItem('token')!, localStorage.getItem('id')!)
+        const { success, resp, wallet: wallet_data, error } = await get_crypto_currencies(localStorage.getItem('token')!, localStorage.getItem('id')!)
 
         if (success) {
             if (!wallet_data || wallet_data.length === 0) {
@@ -37,7 +37,7 @@ const Home = () => {
             setLoading(false)
         }
         else {
-            setExistError(true)
+            toast.error("Something was wrong: " + error)
             setLoading(false)
         }
     }
@@ -87,7 +87,6 @@ const Home = () => {
                         <h4>Exchange</h4>
                         <div>
                             <span>Pay: {0}</span>
-                            <span>Don't have this type of currency</span>
                         </div>
                         <div className={styles.select_container}>
                             <input ref={inputRef} placeholder='0.00' type='number' onChange={handleAmountValue}/>

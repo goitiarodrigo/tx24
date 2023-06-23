@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { Socket, io } from 'socket.io-client'
 import { IUserData, logUserService } from "../services/logUser.service"
 import toast from 'react-hot-toast'
-import alert_sound from '../assets/ping.mp3'
 
 interface IProps {
     children: JSX.Element | JSX.Element[]

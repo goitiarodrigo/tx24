@@ -37,20 +37,12 @@ const Transactions = () => {
 
     async function getTransactions(){
         setIsLoading(true)
-        const { success, resp } = await get_transactions(localStorage.getItem('token')!, localStorage.getItem('id')!)
+        const { success, resp, error } = await get_transactions(localStorage.getItem('token')!, localStorage.getItem('id')!)
         if (success) {
             setData(resp.data)
             setIsLoading(false)
         } else {
-            toast(`An error has occurred`,
-                {
-                    style: {
-                    borderRadius: '5px',
-                    background: 'white',
-                    color: 'black',
-                    },
-                }
-            );
+            toast.error("Something was wrong: " + error)
             setIsLoading(false)
         }
     }

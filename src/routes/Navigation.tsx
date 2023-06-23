@@ -28,6 +28,7 @@ const Navigation = () => {
                             }
                             
                             <Route path="/*" element={<Navigate to="/home" replace />} />
+                            <Route path="/" element={<Navigate to="/home" replace />} />
                         </Route>
                         <Route path="/" element={<PublicRoutes />}>
                             <Route path="/login" element={<Login />} />
