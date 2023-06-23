@@ -32,7 +32,7 @@ const Modal = ({ onClose, cryptoData }: IProps) => {
         if (status === 'ready') {
             setStatus('loading')
             const dataBody = {
-                user: id,
+                user: localStorage.getItem('id'),
                 type_currency_purchased: cryptoData.name,
                 type_currency_used: coinSelected.client_coin,
                 type_of_transaction: 'Sell',
