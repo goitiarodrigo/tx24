@@ -27,7 +27,7 @@ const NavBar = () => {
                     }}
                     to={'/home'}
                 >
-                        Home
+                    Home
                 </NavLink>
                 <NavLink
                     className={({ isActive }) => {
@@ -35,7 +35,7 @@ const NavBar = () => {
                     }}
                     to={'/transactions'}
                 >
-                    Historial de compras
+                    Shopping history
                 </NavLink>
                 <span>{username}</span>
                 <div
